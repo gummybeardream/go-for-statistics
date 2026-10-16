@@ -21,6 +21,13 @@ func main() {
 		{X: 5, Y: 5.68},
 	}
 	
+	regression, err := stats.LinearRegression(dataset1)
+	if err != nil {
+		fmt.Println("Error performing linear regression:", err)
+		return
+	}
+
+	fmt.Println("Regression:", regression)
 	fmt.Println("Dataset 1:", dataset1)
 	fmt.Println("Number of observations:", len(dataset1))
 }
