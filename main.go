@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	dataset1 := stats.Series{
+	datasetOne := stats.Series{
 		{X: 10, Y: 8.04},
 		{X: 8, Y: 6.95},
 		{X: 13, Y: 7.58},
@@ -20,14 +20,14 @@ func main() {
 		{X: 7, Y: 4.82},
 		{X: 5, Y: 5.68},
 	}
-	
-	regression, err := stats.LinearRegression(dataset1)
+
+	regression, err := stats.LinearRegression(datasetOne)
 	if err != nil {
 		fmt.Println("Error performing linear regression:", err)
 		return
 	}
 
 	fmt.Println("Regression:", regression)
-	fmt.Println("Dataset 1:", dataset1)
-	fmt.Println("Number of observations:", len(dataset1))
+	fmt.Println("Dataset 1:", datasetOne)
+	fmt.Println("Number of observations:", len(datasetOne))
 }
