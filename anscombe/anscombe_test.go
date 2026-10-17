@@ -76,3 +76,35 @@ func TestCalculateRegression(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkCalculateRegression(b *testing.B) {
+	benchmarks := []struct {
+		name string
+		data stats.Series
+	}{
+		{
+			name: "Dataset I",
+			data: anscombe.DatasetOne,
+		},
+		{
+			name: "Dataset II",
+			data: anscombe.DatasetTwo(),
+		},
+		{
+			name: "Dataset III",
+			data: anscombe.DatasetThree(),
+		},
+		{
+			name: "Dataset IV",
+			data: anscombe.DatasetFour(),
+		},
+	}
+
+	for _, benchmark := range benchmarks {
+		b.Run(benchmark.name, func(b *testing.B) {
+			for b.Loop() {
+				anscombe.CalculateRegression(benchmark.data)
+			}
+		})
+	}
+}
