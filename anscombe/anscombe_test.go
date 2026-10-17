@@ -1,6 +1,7 @@
 package anscombe_test
 
 import (
+	"errors"
 	"math"
 	"testing"
 
@@ -14,30 +15,42 @@ func TestCalculateRegression(t *testing.T) {
 		data              stats.Series
 		expectedSlope     float64
 		expectedIntercept float64
+		expectedErr       error
 	}{
 		{
+			name:              "returns error if dataset is empty",
+			data:              stats.Series{},
+			expectedSlope:     0,
+			expectedIntercept: 0,
+			expectedErr:       stats.EmptyInput,
+		},
+		{
 			name:              "Dataset I",
-			data:              anscombe.DatasetOne(),
+			data:              anscombe.DatasetOne,
 			expectedSlope:     0.500091,
 			expectedIntercept: 3.000091,
+			expectedErr:       nil,
 		},
 		{
 			name:              "Dataset II",
 			data:              anscombe.DatasetTwo(),
 			expectedSlope:     0.500000,
 			expectedIntercept: 3.000909,
+			expectedErr:       nil,
 		},
 		{
 			name:              "Dataset III",
 			data:              anscombe.DatasetThree(),
 			expectedSlope:     0.499727,
 			expectedIntercept: 3.002455,
+			expectedErr:       nil,
 		},
 		{
 			name:              "Dataset IV",
 			data:              anscombe.DatasetFour(),
 			expectedSlope:     0.499909,
 			expectedIntercept: 3.001727,
+			expectedErr:       nil,
 		},
 	}
 
@@ -50,7 +63,7 @@ func TestCalculateRegression(t *testing.T) {
 			expectedIntercept := test.expectedIntercept
 			tolerance := 0.00001
 
-			if err != nil {
+			if !errors.Is(err, test.expectedErr) {
 				t.Fatalf("unexpected regression error: %v", err)
 			}
 			if math.Abs(slope-expectedSlope) > tolerance {

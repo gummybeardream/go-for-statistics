@@ -9,7 +9,7 @@ import (
 
 func main() {
 	datasets := []stats.Series{
-		anscombe.DatasetOne(),
+		anscombe.DatasetOne,
 		anscombe.DatasetTwo(),
 		anscombe.DatasetThree(),
 		anscombe.DatasetFour(),
