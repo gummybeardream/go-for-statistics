@@ -33,21 +33,21 @@ func TestCalculateRegression(t *testing.T) {
 		},
 		{
 			name:              "Dataset II",
-			data:              anscombe.DatasetTwo(),
+			data:              anscombe.DatasetTwo,
 			expectedSlope:     0.500000,
 			expectedIntercept: 3.000909,
 			expectedErr:       nil,
 		},
 		{
 			name:              "Dataset III",
-			data:              anscombe.DatasetThree(),
+			data:              anscombe.DatasetThree,
 			expectedSlope:     0.499727,
 			expectedIntercept: 3.002455,
 			expectedErr:       nil,
 		},
 		{
 			name:              "Dataset IV",
-			data:              anscombe.DatasetFour(),
+			data:              anscombe.DatasetFour,
 			expectedSlope:     0.499909,
 			expectedIntercept: 3.001727,
 			expectedErr:       nil,
@@ -88,15 +88,15 @@ func BenchmarkCalculateRegression(b *testing.B) {
 		},
 		{
 			name: "Dataset II",
-			data: anscombe.DatasetTwo(),
+			data: anscombe.DatasetTwo,
 		},
 		{
 			name: "Dataset III",
-			data: anscombe.DatasetThree(),
+			data: anscombe.DatasetThree,
 		},
 		{
 			name: "Dataset IV",
-			data: anscombe.DatasetFour(),
+			data: anscombe.DatasetFour,
 		},
 	}
 

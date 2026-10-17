@@ -18,10 +18,8 @@ var (
 		{X: 7, Y: 4.82},
 		{X: 5, Y: 5.68},
 	}
-)
 
-func DatasetTwo() stats.Series {
-	datasetTwo := stats.Series{
+	DatasetTwo = stats.Series{
 		{X: 10, Y: 9.14},
 		{X: 8, Y: 8.14},
 		{X: 13, Y: 8.74},
@@ -35,11 +33,7 @@ func DatasetTwo() stats.Series {
 		{X: 5, Y: 4.74},
 	}
 
-	return datasetTwo
-}
-
-func DatasetThree() stats.Series {
-	datasetThree := stats.Series{
+	DatasetThree = stats.Series{
 		{X: 10, Y: 7.46},
 		{X: 8, Y: 6.77},
 		{X: 13, Y: 12.74},
@@ -53,11 +47,7 @@ func DatasetThree() stats.Series {
 		{X: 5, Y: 5.73},
 	}
 
-	return datasetThree
-}
-
-func DatasetFour() stats.Series {
-	datasetFour := stats.Series{
+	DatasetFour = stats.Series{
 		{X: 8, Y: 6.58},
 		{X: 8, Y: 5.76},
 		{X: 8, Y: 7.71},
@@ -70,6 +60,4 @@ func DatasetFour() stats.Series {
 		{X: 8, Y: 7.91},
 		{X: 8, Y: 6.89},
 	}
-
-	return datasetFour
-}
+)
