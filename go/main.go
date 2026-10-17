@@ -10,9 +10,9 @@ import (
 func main() {
 	datasets := []stats.Series{
 		anscombe.DatasetOne,
-		anscombe.DatasetTwo(),
-		anscombe.DatasetThree(),
-		anscombe.DatasetFour(),
+		anscombe.DatasetTwo,
+		anscombe.DatasetThree,
+		anscombe.DatasetFour,
 	}
 
 	for index, dataset := range datasets {

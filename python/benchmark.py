@@ -26,39 +26,39 @@ datasets = {
     },
 }
 
-
-# 2. Regression function to benchmark
 def calculate_regression(x, y):
-    # TODO: Use sm.add_constant() to include the intercept
-    # TODO: Construct and fit the sm.OLS() regression model
-    # TODO: Return the fitted slope and intercept
-    pass
+    design_matrix = sm.add_constant(x)
+    model = sm.OLS(y, design_matrix)
+    result = model.fit()
+
+    return result.params
 
 
-# 3. Execution-time benchmark
 def benchmark_time(operation, repetitions=10000):
     elapsed = timeit.timeit(operation, number=repetitions)
-    return elapsed / repetitions * 1e9  # nanoseconds per operation
+    return elapsed / repetitions * 1e9
 
 
-# 4. Python-tracked memory benchmark
 def benchmark_memory(operation):
     tracemalloc.start()
 
-    # TODO: Execute operation and measure traced peak memory
-    # Use tracemalloc.get_traced_memory()
+    result = operation()
+    current, peak = tracemalloc.get_traced_memory()
 
     tracemalloc.stop()
+    return peak
 
-    # TODO: Return peak memory in bytes
+for name, data in datasets.items():
+    x_values = data["x"]
+    y_values = data["y"]
 
+    # Define the regression operation to repeat
+    operation = lambda: calculate_regression(x_values, y_values)
 
-# 5. Table-driven benchmark
-for name, dataset in datasets.items():
-    x = pd.Series(dataset["x"])
-    y = pd.Series(dataset["y"])
+    # Benchmarks
+    execution_time = benchmark_time(operation)
+    peak_memory = benchmark_memory(operation)
 
-    # TODO: Define an operation that runs calculate_regression()
-    # TODO: Pass operation to benchmark_time()
-    # TODO: Pass operation to benchmark_memory()
-    # TODO: Print results for this dataset
+    print(f"{name}:")
+    print(f"  Execution time: {execution_time:.2f} ns/op")
+    print(f"  Peak traced memory: {peak_memory} bytes")
