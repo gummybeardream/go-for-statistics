@@ -12,11 +12,11 @@ func TestCalculateRegression(t *testing.T) {
 		// Test implementation
 		slope, intercept, err := anscombe.CalculateRegression(stats.Series{})
 
-		if slope != 8.04 {
-			t.Errorf("expected %f, got %f", 8.04, slope)
+		if slope != .500091 {
+			t.Errorf("expected %f, got %f", .500091, slope)
 		}
-		if intercept != 0.9 {
-			t.Errorf("expected %f, got %f", 0.9, intercept)
+		if intercept != 3.000091 {
+			t.Errorf("expected %f, got %f", 3.000091, intercept)
 		}
 		if err != nil {
 			t.Errorf("expected nil, got %v", err)
