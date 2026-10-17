@@ -8,11 +8,10 @@ go -C go test ./... -v -bench=. -benchmem -count=1
 ```
 
 
-Benchmark Results
+## Benchmark Results
 
-```bash
-Running tool: /usr/local/go/bin/go test -test.fullpath=true -benchmem -run=^$ -bench ^BenchmarkCalculateRegression$ github.com/gummybeardream/go-for-statistics/anscombe
-
+### Go
+```
 goos: darwin
 goarch: arm64
 pkg: github.com/gummybeardream/go-for-statistics/anscombe
@@ -23,6 +22,10 @@ BenchmarkCalculateRegression/Dataset_III-8       	11931700	        97.58 ns/op	 
 BenchmarkCalculateRegression/Dataset_IV-8        	12211124	        98.61 ns/op	     448 B/op	       3 allocs/op
 PASS
 ok  	github.com/gummybeardream/go-for-statistics/anscombe	5.235s
+```
+
+### Python
+```
 ```
 
 ## AI Disclosure 
