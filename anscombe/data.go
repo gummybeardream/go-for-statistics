@@ -21,3 +21,57 @@ func DatasetOne() stats.Series {
 
 	return datasetOne
 }
+
+func DatasetTwo() stats.Series {
+	datasetTwo := stats.Series{
+		{X: 10, Y: 9.14},
+		{X: 8, Y: 8.14},
+		{X: 13, Y: 8.74},
+		{X: 9, Y: 8.77},
+		{X: 11, Y: 9.26},
+		{X: 14, Y: 8.10},
+		{X: 6, Y: 6.13},
+		{X: 4, Y: 3.10},
+		{X: 12, Y: 9.13},
+		{X: 7, Y: 7.26},
+		{X: 5, Y: 4.74},
+	}
+
+	return datasetTwo
+}
+
+func DatasetThree() stats.Series {
+	datasetThree := stats.Series{
+		{X: 10, Y: 7.46},
+		{X: 8, Y: 6.77},
+		{X: 13, Y: 12.74},
+		{X: 9, Y: 7.11},
+		{X: 11, Y: 7.81},
+		{X: 14, Y: 8.84},
+		{X: 6, Y: 6.08},
+		{X: 4, Y: 5.39},
+		{X: 12, Y: 8.15},
+		{X: 7, Y: 6.42},
+		{X: 5, Y: 5.73},
+	}
+
+	return datasetThree
+}
+
+func DatasetFour() stats.Series {
+	datasetFour := stats.Series{
+		{X: 8, Y: 6.58},
+		{X: 8, Y: 5.76},
+		{X: 8, Y: 7.71},
+		{X: 8, Y: 8.84},
+		{X: 8, Y: 8.47},
+		{X: 8, Y: 7.04},
+		{X: 8, Y: 5.25},
+		{X: 19, Y: 12.50},
+		{X: 8, Y: 5.56},
+		{X: 8, Y: 7.91},
+		{X: 8, Y: 6.89},
+	}
+
+	return datasetFour
+}

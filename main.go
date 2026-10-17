@@ -2,20 +2,33 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/gummybeardream/go-for-statistics/anscombe"
+	"github.com/montanaflynn/stats"
 )
 
 func main() {
-	datasetOne := anscombe.DatasetOne()
-
-	fmt.Println("Dataset 1:", datasetOne)
-	fmt.Println("Number of observations:", len(datasetOne))
-
-	slope, intercept, err := anscombe.CalculateRegression(datasetOne)
-	if err != nil {
-		fmt.Println("Regression error:", err)
-		return
+	datasets := []stats.Series{
+		anscombe.DatasetOne(),
+		anscombe.DatasetTwo(),
+		anscombe.DatasetThree(),
+		anscombe.DatasetFour(),
 	}
-	fmt.Printf("Slope: %5f\n", slope)
-	fmt.Printf("Intercept: %5f\n", intercept)
+
+	for index, dataset := range datasets {
+
+		slope, intercept, err := anscombe.CalculateRegression(dataset)
+		if err != nil {
+			fmt.Println("Regression error:", err)
+			continue
+		}
+
+		// Display results
+		fmt.Printf("Dataset %d: %v\n", index+1, dataset)
+		fmt.Println("Number of observations:", len(dataset))
+		fmt.Printf("Slope: %5f\n", slope)
+		fmt.Printf("Intercept: %5f\n", intercept)
+
+	}
+
 }
