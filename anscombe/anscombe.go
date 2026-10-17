@@ -19,15 +19,14 @@ func CalculateRegression(data stats.Series) (float64, float64, error) {
 		return 0, 0, errors.New("at least two coordinates are required")
 	}
 
-	if regression[1].X == regression[0].X {
-		return 0, 0, errors.New("cannot calculate slope: identical X values")
-
+	for index, coordinate := range regression {
+		if coordinate.X != regression[0].X {
+			slope := (regression[index].Y - regression[0].Y) / (regression[index].X - regression[0].X)
+			intercept := regression[0].Y - slope*regression[0].X
+			return slope, intercept, nil
+		}
 	}
 
-	// Calculate slope
-	slope := (regression[1].Y - regression[0].Y) / (regression[1].X - regression[0].X)
-	intercept := regression[0].Y - slope*regression[0].X
+	return 0, 0, errors.New("cannot calculate slope: identical X values")
 
-	// Return placeholder values
-	return slope, intercept, nil
 }
