@@ -25,28 +25,48 @@ func TestCalculateRegression(t *testing.T) {
 			expectedErr:       stats.EmptyInput,
 		},
 		{
-			name:              "Dataset I",
+			name: "returns error if dataset doesn't have >= 2 coordinates",
+			data: stats.Series{
+				{X: 10, Y: 15},
+			},
+			expectedSlope:     0,
+			expectedIntercept: 0,
+			expectedErr:       stats.BoundsErr,
+		},
+		{
+			name: "returns error if dataset is outside bounds",
+			data: stats.Series{
+				{X: 10, Y: 5},
+				{X: 10, Y: 8},
+				{X: 10, Y: 12},
+			},
+			expectedSlope:     0,
+			expectedIntercept: 0,
+			expectedErr:       stats.BoundsErr,
+		},
+		{
+			name:              "returns slope and intercept from Anscombe's dataset I",
 			data:              anscombe.DatasetOne,
 			expectedSlope:     0.500091,
 			expectedIntercept: 3.000091,
 			expectedErr:       nil,
 		},
 		{
-			name:              "Dataset II",
+			name:              "returns slope and intercept from Anscombe's dataset II",
 			data:              anscombe.DatasetTwo,
 			expectedSlope:     0.500000,
 			expectedIntercept: 3.000909,
 			expectedErr:       nil,
 		},
 		{
-			name:              "Dataset III",
+			name:              "returns slope and intercept from Anscombe's dataset III",
 			data:              anscombe.DatasetThree,
 			expectedSlope:     0.499727,
 			expectedIntercept: 3.002455,
 			expectedErr:       nil,
 		},
 		{
-			name:              "Dataset IV",
+			name:              "returns slope and intercept from Anscombe's dataset IV",
 			data:              anscombe.DatasetFour,
 			expectedSlope:     0.499909,
 			expectedIntercept: 3.001727,
@@ -56,7 +76,6 @@ func TestCalculateRegression(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			// Test implementation
 			slope, intercept, err := anscombe.CalculateRegression(test.data)
 
 			expectedSlope := test.expectedSlope
